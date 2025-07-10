@@ -4,3 +4,6 @@
 [submodule "vWAN-macropad/random-keyboard-parts.pretty"]
 	path = vWAN-macropad/random-keyboard-parts.pretty
 	url = git@github.com:ai03-2725/random-keyboard-parts.pretty.git
+[submodule "vWAN-macropad/scottokeebs"]
+	path = vWAN-macropad/scottokeebs
+	url = git@github.com:joe-scotto/scottokeebs.git
