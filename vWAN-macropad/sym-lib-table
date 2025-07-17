@@ -2,5 +2,5 @@
   (version 7)
   (lib (name "random-keyboard-parts")(type "Legacy")(uri "${KIPRJMOD}/random-keyboard-parts.pretty/Schematic Library/random-keyboard-parts.lib")(options "")(descr ""))
   (lib (name "ScottoKeebs")(type "KiCad")(uri "${KIPRJMOD}/scottokeebs/Extras/ScottoKicad/symbols/ScottoKeebs.kicad_sym")(options "")(descr ""))
-  (lib (name "Blackpill_v3.1")(type "KiCad")(uri "${KIPRJMOD}/Blackpill_v3.1.kicad_sym")(options "")(descr ""))
+  (lib (name "wandou_kb_parts")(type "KiCad")(uri "${KIPRJMOD}/Blackpill_v3.1.kicad_sym")(options "")(descr ""))
 )

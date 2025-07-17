@@ -7,3 +7,6 @@
 [submodule "vWAN-macropad/scottokeebs"]
 	path = vWAN-macropad/scottokeebs
 	url = git@github.com:joe-scotto/scottokeebs.git
+[submodule "vWAN-macropad/kiswitch"]
+	path = vWAN-macropad/kiswitch
+	url = git@github.com:kiswitch/kiswitch.git
