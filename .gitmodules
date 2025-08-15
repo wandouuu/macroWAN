@@ -10,3 +10,9 @@
 [submodule "vWAN-macropad/kiswitch"]
 	path = vWAN-macropad/kiswitch
 	url = git@github.com:kiswitch/kiswitch.git
+[submodule "vWAN-macropad/Kicad-STM32"]
+	path = vWAN-macropad/Kicad-STM32
+	url = git@github.com:piit79/Kicad-STM32.git
+[submodule "vWAN-macropad/Keebio-Parts.pretty"]
+	path = vWAN-macropad/Keebio-Parts.pretty
+	url = git@github.com:keebio/Keebio-Parts.pretty.git
