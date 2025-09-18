@@ -1,0 +1,7 @@
+﻿Designator,Footprint,Quantity,Value,LCSC Part #
+"C1, C2",C_Disc_D5.0mm_W2.5mm_P2.50mm,2,0.1uF,
+"D1, D2, D3, D4, D5, D6, D7",Diode_DO-35,7,Diode,
+J1,OLED_128x32,1,OLED_128x32,
+"SW1, SW2, SW3, SW4, SW5, SW6",MX-Hotswap-1U,6,Switch,
+SW7,RotaryEncoder_EC11,1,RotaryEncoder_Switch,
+U1,YAAJ_WeAct_BlackPill_SWD_2,1,YAAJ_WeAct_BlackPill_Part_Like_SWD_Breakout,
