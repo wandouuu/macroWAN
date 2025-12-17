@@ -1,11 +1,18 @@
-#ifndef __MATRIX_KEYPAD_H_
-#define __MATRIX_KEYPAD_H_
+/*
+ * matrix_keypad.h
+ *
+ *  Created on: Dec 17, 2025
+ *      Author: wandouuu
+ */
+
+#ifndef INC_MATRIX_KEYPAD_H_
+#define INC_MATRIX_KEYPAD_H_
 
 #include "stm32f4xx_it.h"
 
 // Define rows and columns
 #define KEYPAD_ROWS    3
-#define KEYPAD_COLUMNS 3
+#define KEYPAD_COLS 3
 
 // Rows
 #define ROW0_GPIO_Port GPIOA
@@ -27,7 +34,21 @@
 extern "C" {
 #endif
 
+
+// Keymap matrix
+static const char keymap[KEYPAD_ROWS][KEYPAD_COLS] = {
+    {'\0', '\0', 'A'}, // rotary encoder
+    { 'B' , 'C', 'D'}, // ROW 0
+    { 'E',  'F', 'G'}  // ROW 1
+};
+
+// Initialize keypad
+void Keypad_Init(void);
+
+// Scanning
+char Keypad_GetKey(void);
 #ifdef __cplusplus
 }
 #endif
-#endif /* __MATRIX_KEYPAD_H_ *
+
+#endif /* INC_MATRIX_KEYPAD_H_ */
