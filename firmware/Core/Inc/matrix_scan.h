@@ -30,24 +30,38 @@
 #define COL2_GPIO_Port GPIOB
 #define COL2_Pin       GPIO_PIN_15
 
+// Define values for key presses and key released
+#define KEY_RELEASED   0
+#define KEY_PRESSED    1
+
+// Define values for debouncing
+#define DEBOUNCE_ITER  5 // will check in main loop every 3 ms, compounding to 15 ms debounce time
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 
 // Tracking the state of each key
-static const char key_state[KEYPAD_ROWS][KEYPAD_COLS] = {
-    {'\0', '\0', 'A'}, // ROW 0 
-    { 'B' , 'C', 'D'}, // ROW 1
-    { 'E',  'F', 'G'}  // ROW 2
-    // C0    C1   C2
+static uint8_t key_state[KEYPAD_ROWS][KEYPAD_COLS] = {
+    {KEY_RELEASED, KEY_RELEASED, KEY_RELEASED}, // ROW 0 
+    {KEY_RELEASED, KEY_RELEASED, KEY_RELEASED}, // ROW 1
+    {KEY_RELEASED, KEY_RELEASED, KEY_RELEASED}  // ROW 2
+    //     C0           C1            C2
+};
+
+// Key iteration (for debouncing)
+static uint8_t key_iteration[KEYPAD_ROWS][KEYPAD_COLS] = {
+    {DEBOUNCE_ITER+1, DEBOUNCE_ITER+1, DEBOUNCE_ITER+1},
+    {DEBOUNCE_ITER+1, DEBOUNCE_ITER+1, DEBOUNCE_ITER+1},
+    {DEBOUNCE_ITER+1, DEBOUNCE_ITER+1, DEBOUNCE_ITER+1}
 };
 
 // Initialize keypad
-void Keypad_Init(void);
+void keypad_init(void);
 
 // Scanning
-void Keypad_GetKey(void);
+void matrix_scan(void);
 #ifdef __cplusplus
 }
 #endif
