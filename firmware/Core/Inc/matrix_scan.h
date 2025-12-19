@@ -5,8 +5,8 @@
  *      Author: wandouuu
  */
 
-#ifndef INC_MATRIX_KEYPAD_H_
-#define INC_MATRIX_KEYPAD_H_
+#ifndef INC_MATRIX_SCAN_H_
+#define INC_MATRIX_SCAN_H_
 
 #include "stm32f4xx_it.h"
 
@@ -35,20 +35,21 @@ extern "C" {
 #endif
 
 
-// Keymap matrix
-static const char keymap[KEYPAD_ROWS][KEYPAD_COLS] = {
-    {'\0', '\0', 'A'}, // rotary encoder
-    { 'B' , 'C', 'D'}, // ROW 0
-    { 'E',  'F', 'G'}  // ROW 1
+// Tracking the state of each key
+static const char key_state[KEYPAD_ROWS][KEYPAD_COLS] = {
+    {'\0', '\0', 'A'}, // ROW 0 
+    { 'B' , 'C', 'D'}, // ROW 1
+    { 'E',  'F', 'G'}  // ROW 2
+    // C0    C1   C2
 };
 
 // Initialize keypad
 void Keypad_Init(void);
 
 // Scanning
-char Keypad_GetKey(void);
+void Keypad_GetKey(void);
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* INC_MATRIX_KEYPAD_H_ */
+#endif /* INC_MATRIX_SCAN_H_ */
