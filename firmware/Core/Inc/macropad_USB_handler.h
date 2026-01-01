@@ -5,17 +5,19 @@
  *      Author: wandouuu
  */
 
-#ifndef INC_USB_DEVICE_H_
-#define INC_USB_DEVICE_H_
+#ifndef INC_MACROPAD_USB_HANDLER_H_
+#define INC_MACROPAD_USB_HANDLER_H_
 
 #include "matrix_scan.h"
 
+#define KEYPAD_REPORT_SIZE 0x09U
+
 // Keyboard matrix handler
-uint8_t USB_send_key(uint8_t key_state, uint8_t row, uint8_t col);
+void send_and_form_USBHID_report();
 
 // Rotary encoder (rotation) handler
 void encoder_handler(void); // temporary arguments
 
 // SSD1306 OLED display handler
 void display_handler(void); // temporary arguments
-#endif /* INC_USB_DEVICE_H_ */
+#endif /* INC_MACROPAD_USB_HANDLER_H_ */

@@ -9,6 +9,7 @@
 #define INC_MATRIX_SCAN_H_
 
 #include "stm32f4xx_it.h"
+#include <stdint.h>
 
 // Define rows and columns
 #define KEYPAD_ROWS    3
@@ -41,21 +42,17 @@
 extern "C" {
 #endif
 
+// Keymap
+extern uint8_t keymap[KEYPAD_ROWS][KEYPAD_COLS];
 
 // Tracking the state of each key
-static uint8_t key_state[KEYPAD_ROWS][KEYPAD_COLS] = {
-    {KEY_RELEASED, KEY_RELEASED, KEY_RELEASED}, // ROW 0 
-    {KEY_RELEASED, KEY_RELEASED, KEY_RELEASED}, // ROW 1
-    {KEY_RELEASED, KEY_RELEASED, KEY_RELEASED}  // ROW 2
-    //     C0           C1            C2
-};
+extern uint8_t key_state[KEYPAD_ROWS][KEYPAD_COLS];
+
+// Tracking the stable state of each key
+extern uint8_t key_stable_state[KEYPAD_ROWS][KEYPAD_COLS];
 
 // Key iteration (for debouncing)
-static uint8_t key_iteration[KEYPAD_ROWS][KEYPAD_COLS] = {
-    {DEBOUNCE_ITER+1, DEBOUNCE_ITER+1, DEBOUNCE_ITER+1},
-    {DEBOUNCE_ITER+1, DEBOUNCE_ITER+1, DEBOUNCE_ITER+1},
-    {DEBOUNCE_ITER+1, DEBOUNCE_ITER+1, DEBOUNCE_ITER+1}
-};
+extern uint8_t key_iteration[KEYPAD_ROWS][KEYPAD_COLS];
 
 // Initialize keypad
 void keypad_init(void);
