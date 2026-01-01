@@ -11,7 +11,7 @@
 #include "matrix_scan.h"
 
 // Keyboard matrix handler
-uint8_t send_key(uint8_t key_state, uint8_t row, uint8_t col);
+uint8_t USB_send_key(uint8_t key_state, uint8_t row, uint8_t col);
 
 // Rotary encoder (rotation) handler
 void encoder_handler(void); // temporary arguments
