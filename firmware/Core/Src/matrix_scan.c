@@ -1,4 +1,5 @@
 #include <matrix_scan.h>
+#include "usb_device.h"
 
 // Arrays containing row ports/pins and column ports/pins
 static GPIO_TypeDef* const ROW_PORT[KEYPAD_ROWS] = {
@@ -17,6 +18,27 @@ static const uint16_t COL_PIN[KEYPAD_COLS] = {
     COL0_Pin, COL1_Pin, COL2_Pin
 };
 
+uint8_t keymap[KEYPAD_ROWS][KEYPAD_COLS] = {
+    {0x00, 0x00, 0x00},
+    {0x00, 0x00, 0x00},
+    {0x00, 0x00, 0x00}
+};
+
+uint8_t key_state[KEYPAD_ROWS][KEYPAD_COLS] = {
+    {KEY_RELEASED, KEY_RELEASED, KEY_RELEASED}, // ROW 0 
+    {KEY_RELEASED, KEY_RELEASED, KEY_RELEASED}, // ROW 1
+    {KEY_RELEASED, KEY_RELEASED, KEY_RELEASED}  // ROW 2
+    //     C0           C1            C2
+};
+
+uint8_t key_iteration[KEYPAD_ROWS][KEYPAD_COLS] = {
+    {DEBOUNCE_ITER+1, DEBOUNCE_ITER+1, DEBOUNCE_ITER+1},
+    {DEBOUNCE_ITER+1, DEBOUNCE_ITER+1, DEBOUNCE_ITER+1},
+    {DEBOUNCE_ITER+1, DEBOUNCE_ITER+1, DEBOUNCE_ITER+1}
+};
+
+
+
 // Set each column to high (not reading state)
 void keypad_init(void){
     uint8_t i = 0;
@@ -31,12 +53,12 @@ void keypad_init(void){
 void matrix_scan(void){
 
     
-    for(uint8_t c = 0; c < 3; ++c){
+    for(uint8_t c = 0; c < KEYPAD_COLS; ++c){
         
         // Set current column low to start reading row
         HAL_GPIO_WritePin(COL_PORT[c], COL_PIN[c], GPIO_PIN_RESET); // Set column to low
 
-        for(uint8_t r = 0; r < 3; ++r){
+        for(uint8_t r = 0; r < KEYPAD_ROWS; ++r){
             
             // If the row pin reads LOW but the previous state was released
             if(HAL_GPIO_ReadPin(ROW_PORT[r], ROW_PIN[r]) == GPIO_PIN_RESET && key_state[r][c] == KEY_RELEASED){
@@ -60,7 +82,9 @@ void matrix_scan(void){
                 // Valid click!
                 } else if(key_iteration[r][c] == DEBOUNCE_ITER){
                     key_iteration[r][c]++;
-                    // USB handler
+
+                    
+
                 }
 
             }
