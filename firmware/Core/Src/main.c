@@ -17,7 +17,9 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
+#include <macropad_USB_handler.h>
 #include "main.h"
+#include "matrix_scan.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -89,8 +91,9 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_I2C1_Init();
+  MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
-
+  keypad_init();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -98,7 +101,7 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
+    matrix_scan();
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -203,6 +206,12 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, COL2_Pin|COL1_Pin|COL0_Pin, GPIO_PIN_RESET);
 
+  /*Configure GPIO pins : ENCA_Pin ENCB_Pin ROW2_Pin */
+  GPIO_InitStruct.Pin = ENCA_Pin|ENCB_Pin|ROW2_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
   /*Configure GPIO pins : COL2_Pin COL1_Pin COL0_Pin */
   GPIO_InitStruct.Pin = COL2_Pin|COL1_Pin|COL0_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
@@ -215,12 +224,6 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : ROW2_Pin */
-  GPIO_InitStruct.Pin = ROW2_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_PULLUP;
-  HAL_GPIO_Init(ROW2_GPIO_Port, &GPIO_InitStruct);
 
   /* USER CODE BEGIN MX_GPIO_Init_2 */
 
