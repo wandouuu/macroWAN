@@ -17,13 +17,16 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
-#include <macropad_USB_handler.h>
 #include "main.h"
-#include "matrix_scan.h"
+
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "matrix_scan.h"
+#include "usb_device.h"
+#include "ssd1306.h"
+#include <macropad_USB_handler.h>
+#include "stdbool.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -45,7 +48,9 @@
 I2C_HandleTypeDef hi2c1;
 
 /* USER CODE BEGIN PV */
-
+volatile uint8_t previous_volume = 255;
+volatile uint8_t current_volume = 0;
+bool volume_flag = false;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -94,6 +99,7 @@ int main(void)
   MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
   keypad_init();
+  ssd1306_Init();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -102,6 +108,15 @@ int main(void)
   {
     /* USER CODE END WHILE */
     matrix_scan();
+  
+    // Update display with value if different
+    if(volume_flag && current_volume != previous_volume){
+      update_display(current_volume);
+      previous_volume = current_volume;
+      volume_flag = false;
+    }
+
+
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
