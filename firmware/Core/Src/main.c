@@ -48,9 +48,9 @@
 I2C_HandleTypeDef hi2c1;
 
 /* USER CODE BEGIN PV */
-volatile uint8_t previous_volume = 255;
+uint8_t previous_volume = 255;
 volatile uint8_t current_volume = 0;
-bool volume_flag = false;
+volatile bool volume_flag = false;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
