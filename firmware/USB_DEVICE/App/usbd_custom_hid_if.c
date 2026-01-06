@@ -176,7 +176,7 @@ __ALIGN_BEGIN static uint8_t CUSTOM_HID_ReportDesc_FS[USBD_CUSTOM_HID_REPORT_DES
 extern USBD_HandleTypeDef hUsbDeviceFS;
 
 /* USER CODE BEGIN EXPORTED_VARIABLES */
-extern uint8_t volume;
+extern uint8_t current_volume;
 extern bool volume_flag;
 /* USER CODE END EXPORTED_VARIABLES */
 /**
@@ -250,7 +250,7 @@ static int8_t CUSTOM_HID_OutEvent_FS(uint8_t event_idx, uint8_t state)
   uint8_t report_id = hhid->Report_buf[0];
   
   if(report_id == 0x03){
-    volume = hhid->Report_buf[1];
+    current_volume = hhid->Report_buf[1];
     volume_flag = true;
   }
 

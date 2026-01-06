@@ -1,5 +1,6 @@
 #include <matrix_scan.h>
-#include "usb_device.h"
+#include "macropad_USB_handler.h"
+#include "main.h"
 
 // Arrays containing row ports/pins and column ports/pins
 static GPIO_TypeDef* const ROW_PORT[KEYPAD_ROWS] = {
@@ -19,12 +20,19 @@ static const uint16_t COL_PIN[KEYPAD_COLS] = {
 };
 
 uint8_t keymap[KEYPAD_ROWS][KEYPAD_COLS] = {
-    {0x00, 0x00, 0x00},
-    {0x00, 0x00, 0x00},
-    {0x00, 0x00, 0x00}
+    {0x00, 0x00, 0x00}, 
+    {0x1A, 0x04, 0x11}, // W A N
+    {0x06, 0x12, 0x18}  // D O U
 };
 
 uint8_t key_state[KEYPAD_ROWS][KEYPAD_COLS] = {
+    {KEY_RELEASED, KEY_RELEASED, KEY_RELEASED}, // ROW 0 
+    {KEY_RELEASED, KEY_RELEASED, KEY_RELEASED}, // ROW 1
+    {KEY_RELEASED, KEY_RELEASED, KEY_RELEASED}  // ROW 2
+    //     C0           C1            C2
+};
+
+uint8_t key_stable_state[KEYPAD_ROWS][KEYPAD_COLS] = {
     {KEY_RELEASED, KEY_RELEASED, KEY_RELEASED}, // ROW 0 
     {KEY_RELEASED, KEY_RELEASED, KEY_RELEASED}, // ROW 1
     {KEY_RELEASED, KEY_RELEASED, KEY_RELEASED}  // ROW 2
@@ -82,8 +90,8 @@ void matrix_scan(void){
                 // Valid click!
                 } else if(key_iteration[r][c] == DEBOUNCE_ITER){
                     key_iteration[r][c]++;
-
                     
+                    key_stable_state[r][c] = key_state[r][c];
 
                 }
 
@@ -94,5 +102,8 @@ void matrix_scan(void){
         HAL_GPIO_WritePin(COL_PORT[c], COL_PIN[c], GPIO_PIN_SET);
 
     }
+
+
+    send_matrix_HID_report();
 
 }

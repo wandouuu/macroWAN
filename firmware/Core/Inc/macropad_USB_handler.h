@@ -11,13 +11,14 @@
 #include "matrix_scan.h"
 
 #define KEYPAD_REPORT_SIZE 0x09U
+#define ENCODER_REPORT_SIZE 0x02U
 
 // Keyboard matrix handler
-void send_and_form_USBHID_report();
+void send_matrix_HID_report(void);
 
 // Rotary encoder (rotation) handler
-void encoder_handler(void); // temporary arguments
+void send_encoder_HID_report(void);
 
 // SSD1306 OLED display handler
-void display_handler(void); // temporary arguments
+void update_display(uint8_t volume);
 #endif /* INC_MACROPAD_USB_HANDLER_H_ */

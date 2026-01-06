@@ -1,0 +1,2 @@
+../Core/Src/macropad_USB_handler.c:22:6:send_and_form_USBHID_report	5
+../Core/Src/macropad_USB_handler.c:48:6:update_display	1

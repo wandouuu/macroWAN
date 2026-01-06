@@ -13,14 +13,12 @@ def read_volume():
 
     return math.floor(volume.GetMasterVolumeLevelScalar()*100)
 
-def send_HID_report(dev):
-    
-    volume = read_volume()
+def send_HID_report(dev, volume):
                   # ID
     hid_report = [0x03, volume, 0, 0, 0, 0, 0, 0, 0]
 
     try:
-        dev.write(0x01, hid_report)
+        dev.write(0x01, hid_report) # to be modified... maybe
         return True
     except usb.core.USBError as e:
         print(f"Write failed: {e}")
@@ -52,11 +50,11 @@ def main():
             time.sleep(1)
             continue
         else:
-            if send_HID_report(dev):
+            if send_HID_report(dev, current_volume):
                 previous_volume = current_volume
             else:
                 dev = None
-                
+
             time.sleep(1)
         
         

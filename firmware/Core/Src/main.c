@@ -106,7 +106,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    /* USER CODE END WHILE */
+    // Scan keypad matrix
     matrix_scan();
   
     // Update display with value if different
@@ -116,7 +116,9 @@ int main(void)
       volume_flag = false;
     }
 
-
+    
+    /* USER CODE END WHILE */
+    
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

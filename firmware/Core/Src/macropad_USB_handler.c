@@ -16,30 +16,47 @@
 extern const SSD1306_Font_t Font_11x18;
 extern USBD_HandleTypeDef hUsbDeviceFS;
 
-uint8_t prev_report[KEYPAD_REPORT_SIZE] = {0};
-uint8_t curr_report[KEYPAD_REPORT_SIZE] = {0};
+uint8_t matrix_prev_report[KEYPAD_REPORT_SIZE] = {0};
+uint8_t matrix_curr_report[KEYPAD_REPORT_SIZE] = {0};
+uint8_t encoder_curr_report[ENCODER_REPORT_SIZE] = {0};
 
-void send_and_form_USBHID_report(){
+void send_matrix_HID_report(void){
 
-   curr_report[0] = 0x01; // Report ID for keyboard
+   memset(matrix_curr_report, 0, KEYPAD_REPORT_SIZE);
+
+   matrix_curr_report[0] = 0x01; // Report ID for keyboard
 
    uint8_t ctr = 3;
    for(uint8_t r = 0; r < KEYPAD_ROWS; ++r){
       for(uint8_t c = 0; c < KEYPAD_COLS; ++c){
 
          if(key_stable_state[r][c] == KEY_PRESSED){
-            curr_report[ctr] = keymap[r][c];
+            matrix_curr_report[ctr] = keymap[r][c];
             ++ctr;
          }
 
       }
    }
 
-   if(memcmp(prev_report, curr_report, KEYPAD_REPORT_SIZE) != 0){
-      USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, curr_report, KEYPAD_REPORT_SIZE);
-      memcpy(prev_report, curr_report, KEYPAD_REPORT_SIZE);
+   if(memcmp(matrix_prev_report, matrix_curr_report, KEYPAD_REPORT_SIZE) != 0){
+      USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, matrix_curr_report, KEYPAD_REPORT_SIZE);
+      memcpy(matrix_prev_report, matrix_curr_report, KEYPAD_REPORT_SIZE);
    }
    
+
+   return;
+
+}
+
+void send_encoder_HID_report(void){
+   
+   encoder_curr_report[0] = 0x02; // Report ID for encoder
+
+   
+
+   // Send another report with 0x00 (at the end)
+   encoder_curr_report[1] = 0x00;
+   USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, encoder_curr_report, ENCODER_REPORT_SIZE);
 
    return;
 
