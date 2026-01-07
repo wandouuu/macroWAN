@@ -36,7 +36,7 @@
 #define KEY_PRESSED    1
 
 // Define values for debouncing
-#define DEBOUNCE_ITER  5 // will check in main loop every 3 ms, compounding to 15 ms debounce time
+#define DEBOUNCE_ITER  5000
 
 #ifdef __cplusplus
 extern "C" {
