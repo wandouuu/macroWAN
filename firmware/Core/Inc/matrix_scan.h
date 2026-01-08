@@ -36,7 +36,7 @@
 #define KEY_PRESSED    1
 
 // Define values for debouncing
-#define DEBOUNCE_ITER  5000
+#define DEBOUNCE_ITER  10
 
 #ifdef __cplusplus
 extern "C" {
@@ -53,6 +53,7 @@ extern uint8_t key_stable_state[KEYPAD_ROWS][KEYPAD_COLS];
 
 // Key iteration (for debouncing)
 extern uint8_t key_iteration[KEYPAD_ROWS][KEYPAD_COLS];
+
 
 // Initialize keypad
 void keypad_init(void);

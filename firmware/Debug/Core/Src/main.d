@@ -30,11 +30,11 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
  ../Core/Inc/matrix_scan.h ../Core/Inc/stm32f4xx_it.h \
- ../USB_DEVICE/App/usb_device.h \
+ ../Core/Inc/encoder_scan.h ../USB_DEVICE/App/usb_device.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
  ../USB_DEVICE/Target/usbd_conf.h \
- C:/Users/Utilisateur/projects/repos/macroWAN/firmware/Drivers/OLED/ssd1306.h \
- C:/Users/Utilisateur/projects/repos/macroWAN/firmware/Drivers/OLED/ssd1306_conf.h \
+ C:/Users/Brendan\ Leung/PycharmProjects/repos/macroWAN/firmware/Drivers/OLED/ssd1306.h \
+ C:/Users/Brendan\ Leung/PycharmProjects/repos/macroWAN/firmware/Drivers/OLED/ssd1306_conf.h \
  ../Core/Inc/macropad_USB_handler.h ../Core/Inc/matrix_scan.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
@@ -69,10 +69,11 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h:
 ../Core/Inc/matrix_scan.h:
 ../Core/Inc/stm32f4xx_it.h:
+../Core/Inc/encoder_scan.h:
 ../USB_DEVICE/App/usb_device.h:
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h:
 ../USB_DEVICE/Target/usbd_conf.h:
-C:/Users/Utilisateur/projects/repos/macroWAN/firmware/Drivers/OLED/ssd1306.h:
-C:/Users/Utilisateur/projects/repos/macroWAN/firmware/Drivers/OLED/ssd1306_conf.h:
+C:/Users/Brendan\ Leung/PycharmProjects/repos/macroWAN/firmware/Drivers/OLED/ssd1306.h:
+C:/Users/Brendan\ Leung/PycharmProjects/repos/macroWAN/firmware/Drivers/OLED/ssd1306_conf.h:
 ../Core/Inc/macropad_USB_handler.h:
 ../Core/Inc/matrix_scan.h:

@@ -65,8 +65,8 @@ all: main-build
 main-build: macroWAN_firmware.elf secondary-outputs
 
 # Tool invocations
-macroWAN_firmware.elf macroWAN_firmware.map: $(OBJS) $(USER_OBJS) C:\Users\Utilisateur\projects\repos\macroWAN\firmware\STM32F411CEUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "macroWAN_firmware.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Utilisateur\projects\repos\macroWAN\firmware\STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="macroWAN_firmware.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+macroWAN_firmware.elf macroWAN_firmware.map: $(OBJS) $(USER_OBJS) C:\Users\Brendan\ Leung\PycharmProjects\repos\macroWAN\firmware\STM32F411CEUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "macroWAN_firmware.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Brendan Leung\PycharmProjects\repos\macroWAN\firmware\STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="macroWAN_firmware.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

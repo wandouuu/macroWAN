@@ -47,6 +47,7 @@ uint8_t key_iteration[KEYPAD_ROWS][KEYPAD_COLS] = {
 
 
 
+
 // Set each column to high (not reading state)
 void keypad_init(void){
     uint8_t i = 0;
@@ -60,7 +61,8 @@ void keypad_init(void){
 
 void matrix_scan(void){
 
-    
+    uint8_t new_report = 0;
+
     for(uint8_t c = 0; c < KEYPAD_COLS; ++c){
         
         // Set current column low to start reading row
@@ -93,6 +95,7 @@ void matrix_scan(void){
                     
                     key_stable_state[r][c] = key_state[r][c];
 
+                    new_report = 1;
                 }
 
             }
@@ -103,7 +106,10 @@ void matrix_scan(void){
 
     }
 
-
-    send_matrix_HID_report();
+    // Only sends a new report if button is clicked
+    if(new_report == 1){
+        send_matrix_HID_report();   
+    }
+    
 
 }

@@ -23,6 +23,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "matrix_scan.h"
+#include "encoder_scan.h"
 #include "usb_device.h"
 #include "ssd1306.h"
 #include <macropad_USB_handler.h>
@@ -51,6 +52,8 @@ I2C_HandleTypeDef hi2c1;
 uint8_t previous_volume = 255;
 volatile uint8_t current_volume = 0;
 volatile bool volume_flag = false;
+uint32_t encoder_previous_time = 0;
+uint8_t encoder_release_flag = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -74,7 +77,8 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-
+  uint32_t previous_tick = 0;
+  
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -107,7 +111,21 @@ int main(void)
   while (1)
   {
     // Scan keypad matrix
-    matrix_scan();
+    uint32_t current_tick = HAL_GetTick();
+    if(current_tick - previous_tick > 0){
+      matrix_scan();
+      encoder_scan();
+
+      if(encoder_release_flag && (HAL_GetTick() - encoder_previous_time) > 10){
+        send_encoder_HID_report(0x00);
+        encoder_release_flag = 0;
+      }
+
+      previous_tick = current_tick;
+    }
+
+    
+    
   
     // Update display with value if different
     if(volume_flag && current_volume != previous_volume){

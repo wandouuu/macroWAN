@@ -30,7 +30,7 @@ void send_matrix_HID_report(void){
    for(uint8_t r = 0; r < KEYPAD_ROWS; ++r){
       for(uint8_t c = 0; c < KEYPAD_COLS; ++c){
 
-         if(key_stable_state[r][c] == KEY_PRESSED){
+         if(key_stable_state[r][c] == KEY_PRESSED && ctr < KEYPAD_REPORT_SIZE){
             matrix_curr_report[ctr] = keymap[r][c];
             ++ctr;
          }
@@ -48,14 +48,11 @@ void send_matrix_HID_report(void){
 
 }
 
-void send_encoder_HID_report(void){
+void send_encoder_HID_report(uint8_t vol_command){
    
    encoder_curr_report[0] = 0x02; // Report ID for encoder
 
-   
-
-   // Send another report with 0x00 (at the end)
-   encoder_curr_report[1] = 0x00;
+   encoder_curr_report[1] = vol_command;
    USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, encoder_curr_report, ENCODER_REPORT_SIZE);
 
    return;

@@ -1,2 +1,2 @@
-../Core/Src/matrix_scan.c:51:6:keypad_init	16	static
-../Core/Src/matrix_scan.c:61:6:matrix_scan	24	static
+../Core/Src/matrix_scan.c:52:6:keypad_init	16	static
+../Core/Src/matrix_scan.c:62:6:matrix_scan	24	static

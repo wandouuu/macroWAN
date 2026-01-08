@@ -1,10 +1,4 @@
-Core/Src/macropad_USB_handler.o: ../Core/Src/macropad_USB_handler.c \
- ../Core/Inc/macropad_USB_handler.h ../Core/Inc/matrix_scan.h \
- ../Core/Inc/stm32f4xx_it.h \
- ../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc/usbd_customhid.h \
- ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
- ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
- ../USB_DEVICE/Target/usbd_conf.h ../Core/Inc/main.h \
+Core/Src/encoder_scan.o: ../Core/Src/encoder_scan.c ../Core/Inc/main.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
@@ -35,19 +29,8 @@ Core/Src/macropad_USB_handler.o: ../Core/Src/macropad_USB_handler.c \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
- ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h \
- ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
- ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h \
- ../Core/Inc/matrix_scan.h \
- C:/Users/Brendan\ Leung/PycharmProjects/repos/macroWAN/firmware/Drivers/OLED/ssd1306.h \
- C:/Users/Brendan\ Leung/PycharmProjects/repos/macroWAN/firmware/Drivers/OLED/ssd1306_conf.h
-../Core/Inc/macropad_USB_handler.h:
-../Core/Inc/matrix_scan.h:
-../Core/Inc/stm32f4xx_it.h:
-../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc/usbd_customhid.h:
-../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h:
-../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h:
-../USB_DEVICE/Target/usbd_conf.h:
+ ../Core/Inc/encoder_scan.h ../Core/Inc/stm32f4xx_it.h \
+ ../Core/Inc/macropad_USB_handler.h ../Core/Inc/matrix_scan.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -79,9 +62,7 @@ Core/Src/macropad_USB_handler.o: ../Core/Src/macropad_USB_handler.c \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h:
-../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h:
-../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h:
-../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h:
+../Core/Inc/encoder_scan.h:
+../Core/Inc/stm32f4xx_it.h:
+../Core/Inc/macropad_USB_handler.h:
 ../Core/Inc/matrix_scan.h:
-C:/Users/Brendan\ Leung/PycharmProjects/repos/macroWAN/firmware/Drivers/OLED/ssd1306.h:
-C:/Users/Brendan\ Leung/PycharmProjects/repos/macroWAN/firmware/Drivers/OLED/ssd1306_conf.h:

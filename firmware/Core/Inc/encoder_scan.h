@@ -19,6 +19,22 @@
 #define ENC_B_PORT     GPIOB
 #define ENC_B_PIN      GPIO_PIN_12
 
+#define VOLUME_UP      0x01
+#define VOLUME_DOWN    0x02
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+extern uint8_t encoder_release_flag;
+extern uint32_t encoder_previous_time;
+
 void encoder_scan(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+
 
 #endif /* INC_ENCODER_SCAN_H_ */

@@ -1,3 +1,4 @@
+"./Core/Src/encoder_scan.o"
 "./Core/Src/macropad_USB_handler.o"
 "./Core/Src/main.o"
 "./Core/Src/matrix_scan.o"
