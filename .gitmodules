@@ -1,18 +1,18 @@
 [submodule "vWAN-macropad/MX_V2"]
-	path = vWAN-macropad/MX_V2
+	path = macroWAN/MX_V2
 	url = git@github.com:ai03-2725/MX_V2.git
 [submodule "vWAN-macropad/random-keyboard-parts.pretty"]
-	path = vWAN-macropad/random-keyboard-parts.pretty
+	path = macroWAN/random-keyboard-parts.pretty
 	url = git@github.com:ai03-2725/random-keyboard-parts.pretty.git
 [submodule "vWAN-macropad/scottokeebs"]
-	path = vWAN-macropad/scottokeebs
+	path = macroWAN/scottokeebs
 	url = git@github.com:joe-scotto/scottokeebs.git
 [submodule "vWAN-macropad/kiswitch"]
-	path = vWAN-macropad/kiswitch
+	path = macroWAN/kiswitch
 	url = git@github.com:kiswitch/kiswitch.git
 [submodule "vWAN-macropad/Kicad-STM32"]
-	path = vWAN-macropad/Kicad-STM32
+	path = macroWAN/Kicad-STM32
 	url = git@github.com:piit79/Kicad-STM32.git
 [submodule "vWAN-macropad/Keebio-Parts.pretty"]
-	path = vWAN-macropad/Keebio-Parts.pretty
+	path = macroWAN/Keebio-Parts.pretty
 	url = git@github.com:keebio/Keebio-Parts.pretty.git
